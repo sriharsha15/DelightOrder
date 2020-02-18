@@ -17,37 +17,18 @@ public class ProductStock
 	private String qualityCheck;
 	private Date exitDate;
 	
-	public ProductStock(String orderId, String name, double price_per_unit, double quantityValue, double quantityUnit,
-			double price, String warehouseID, Date deliveryDate, Date manufacturingDate, Date expiryDate,
-			String qualityCheck, Date exitDate) {
-		super();
-		this.orderId = orderId;
-		this.name = name;
-		this.price_per_unit = price_per_unit;
-		this.quantityValue = quantityValue;
-		this.quantityUnit = quantityUnit;
-		this.price = price;
-		this.warehouseID = warehouseID;
-		this.deliveryDate = deliveryDate;
-		this.manufacturingDate = manufacturingDate;
-		this.expiryDate = expiryDate;
-		this.qualityCheck = qualityCheck;
-		this.exitDate = exitDate;
-	}
-
-	public ProductStock(String orderId, String name, double price_per_unit, double quantityValue, double quantityUnit,
-			double price, String warehouseID, String qualityCheck) {
-		super();
-		this.orderId = orderId;
-		this.name = name;
-		this.price_per_unit = price_per_unit;
-		this.quantityValue = quantityValue;
-		this.quantityUnit = quantityUnit;
-		this.price = price;
-		this.warehouseID = warehouseID;
-		this.qualityCheck = qualityCheck;
-	}
 	
+	public ProductStock(String orderId, String name, double price_per_unit, double quantityValue, double quantityUnit,
+			double price, String warehouseID) {
+		super();
+		this.orderId = orderId;
+		this.name = name;
+		this.price_per_unit = price_per_unit;
+		this.quantityValue = quantityValue;
+		this.quantityUnit = quantityUnit;
+		this.price = price;
+		this.warehouseID = warehouseID;
+	}
 	public String getOrderId() {
 		return orderId;
 	}
@@ -123,10 +104,10 @@ public class ProductStock
 	}
 	@Override
 	public String toString() {
-		return "ProductStock [orderId=" + orderId + ", name=" + name + ", price_per_unit=" + price_per_unit
-				+ ", quantityValue=" + quantityValue + ", quantityUnit=" + quantityUnit + ", price=" + price
-				+ ", warehouseID=" + warehouseID + ", deliveryDate=" + deliveryDate + ", manufacturingDate="
-				+ manufacturingDate + ", expiryDate=" + expiryDate + ", qualityCheck=" + qualityCheck + ", processDate="
+		return "ProductStock [orderId =" + orderId + ", name =" + name + ",  price_per_unit =" + price_per_unit
+				+ ",\nquantityValue =" + quantityValue + ", quantityUnit=" + quantityUnit + ", price=" + price
+				+ ", \nwarehouseID=" + warehouseID + ", deliveryDate=" + deliveryDate + ",  manufacturingDate="
+				+ manufacturingDate + ",\n expiryDate=" + expiryDate + ", qualityCheck=" + qualityCheck + ", exitDate="
 				+ exitDate + "]";
 	}	
 }
