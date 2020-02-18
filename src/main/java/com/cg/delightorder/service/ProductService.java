@@ -13,6 +13,6 @@ public interface ProductService
 	public String updateExitDateinStock(String orderId,Date exitDate);
 	public boolean validateManfacturingDate(Date manufacturing_date);
 	public boolean validateExpiryDate(Date manufacturing_date,Date expiry_date);
-	public ProductStock updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck);
+	public String updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck);
 	public boolean doesProductOrderIdExistInStock(String orderId);
 }

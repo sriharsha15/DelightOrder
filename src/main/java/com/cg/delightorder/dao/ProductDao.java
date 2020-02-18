@@ -38,22 +38,19 @@ public class ProductDao
 		 return false;
 		 
 	 }
-	 public String updateExitDateinStock(String orderId,Date exitDate) throws ProductException
+	 public String updateExitDateinStock(String orderId,Date exitDate) 
 	 {
-		 for (Entry<String, ProductStock> mp:productlist.entrySet()) 
+		 for (Entry<String,ProductStock> mp:productlist.entrySet()) 
 		 {
-			 if (mp.getValue().getOrderId().contentEquals(orderId))
+			 if (mp.getValue().getOrderId().equals(orderId))
 			 {
 	           mp.getValue().setExitDate(exitDate);      
              }
-			 else
-			 {
-				 throw new ProductException("No OrderId Exist");
-			 }
+			 
 		 }
 		 return "Data Inserted";
 	 }
-	 public ProductStock updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck) throws ProductException
+	 public String updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck)
 	 { 
 		 for (Entry<String , ProductStock> mp:productlist.entrySet()) 
 		 {
@@ -63,11 +60,7 @@ public class ProductDao
 	           mp.getValue().setExpiryDate(expiry_date);
 	           mp.getValue().setQualityCheck(qualityCheck);
 			 }
-			 else
-			 {
-				 throw new ProductException("No OrderId Exist");
-			 }
-         }
-		 return productlist.get(orderId);
+		 }
+		 return "Data Inserted";
 	 }
 }

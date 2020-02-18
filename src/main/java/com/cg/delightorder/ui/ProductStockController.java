@@ -12,11 +12,13 @@ public class ProductStockController
 {
 	public static void main(String[] args) throws ParseException 
 	{
-	ProductServiceImpl pss=new ProductServiceImpl();
-
     Scanner sc=new Scanner(System.in);
+	ProductServiceImpl pss=new ProductServiceImpl();
+    while(true)
+    {	
+   
     
-    System.out.println("1->TrackProductorder\n2->updateExitDate\n3->updateProductStock");
+    System.out.println("1->TrackProductorder\n2->updateExitDate\n3->updateProductStock\n4->stockManagement");
     System.out.println("Enter the choice");
     int choice=sc.nextInt();
     sc.nextLine();
@@ -38,7 +40,7 @@ public class ProductStockController
          System.out.println(pss.exitDateCheck(exitDate));
          System.out.println("Enter orderId");
          String orderId=sc.nextLine();
-        System.out.println(pss.updateExitDateinStock(orderId,exitDate));
+         System.out.println(pss.updateExitDateinStock(orderId,exitDate));
         break;
     }
     case 3:
@@ -58,13 +60,39 @@ public class ProductStockController
         System.out.println(pss.updateProductStock(orderId,manufacturing_date, expiry_date, qualityCheck));
         break;
     }
+    case 4:
+    {
+    	 System.out.println("Enter orderId");
+    	 String orderId=sc.nextLine();
+    	 System.out.println(pss.doesProductOrderIdExist(orderId));
+    	 System.out.println(pss.trackProductOrder(orderId));
+    	 System.out.println("Enter Exit date in this format -> MM/dd/yyyy");
+         String date=sc.nextLine();
+         Date exitDate=new SimpleDateFormat("MM/dd/yyyy").parse(date); 
+         System.out.println(pss.exitDateCheck(exitDate));
+         System.out.println(pss.updateExitDateinStock(orderId,exitDate));
+         System.out.println("Enter Manufacturing date");
+         String date1=sc.nextLine();
+         Date manufacturing_date=new SimpleDateFormat("MM/dd/yyyy").parse(date1); 
+         System.out.println(pss.validateManfacturingDate(manufacturing_date));
+         System.out.println("Enter expiry date");
+         String date2=sc.nextLine();
+         Date expiry_date=new SimpleDateFormat("MM/dd/yyyy").parse(date2);
+         System.out.println(pss.validateExpiryDate(manufacturing_date, expiry_date));
+         System.out.println("Enter Quality Check");
+         String qualityCheck=sc.nextLine();
+         System.out.println(pss.updateProductStock(orderId,manufacturing_date, expiry_date, qualityCheck));
+         System.out.println(pss.trackProductOrder(orderId));
+         break;
+    }
     default:
     {
     	System.out.println("Enter choice is invalid");
     	break;
     }
     }
-    sc.close();	
+   	}
+    
 	}
 	
 }

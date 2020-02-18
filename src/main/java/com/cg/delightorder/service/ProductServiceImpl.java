@@ -32,7 +32,8 @@ public class ProductServiceImpl implements ProductService
 	 
 		try {
 			return  ps.doesProductOrderIdExist(orderId);
-		} catch (ProductException e) {
+		} 
+		catch (ProductException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -63,16 +64,11 @@ public class ProductServiceImpl implements ProductService
 		// TODO Auto-generated method stub
 		if(exitDateCheck(exitDate))	
 		{
-		try {
 			return ps.updateExitDateinStock(orderId,exitDate);
-		} catch (ProductException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		  
 		}
 		else 
 			return "null";
-		return orderId;
 	}
 	public boolean validateManfacturingDate(Date manufacturing_date) {
 		// TODO Auto-generated method stub
@@ -135,18 +131,12 @@ public class ProductServiceImpl implements ProductService
 	    	    }
 		
 	}
-	public ProductStock updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck)
+	public String updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck)
 	{
 		//if(validateManfacturingDate( manufacturing_date) && validateExpiryDate( manufacturing_date,expiry_date))	
-			try {
+		
 				return ps.updateProductStock(orderId,manufacturing_date, expiry_date, qualityCheck);
-			} catch (ProductException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//else 
-				//return null;
-			return null;
+		
 		
 	}
 	public boolean doesProductOrderIdExistInStock(String orderId) {
