@@ -5,46 +5,45 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.cg.delightorder.dto.ProductStock;
-import com.cg.delightorder.exception.ProductException;
 import com.cg.delightorder.util.ProductRepository;
 
 
-public class ProductDao 
+public class ProductDao implements RawMaterialDao
 {
      ProductRepository productRepository=new ProductRepository();
      Map<String, ProductStock> productlist=productRepository.getProductlist();
-	 public ProductStock trackProductOrder(String orderId)throws ProductException
+	 public ProductStock trackProductOrder(String orderId)
 	 {
-		 
-		 
-   		    return productlist.get(orderId);
-		 
-		 
-	 }
-	 public boolean doesProductOrderIdExist(String orderId) throws ProductException
-	 {
-		 
-		 for (Entry<String, ProductStock> mp:productlist.entrySet()) 
+		 for (Entry<String, ProductStock> map:productlist.entrySet()) 
 		 {
-	            if (mp.getValue().getOrderId().contentEquals(orderId))
+	            if (map.getValue().getOrderId().contentEquals(orderId))
+	            {
+		 
+		         return productlist.get(orderId);
+	            }
+	          
+		 }
+		 return null;
+	 }
+	 public boolean doesProductOrderIdExist(String orderId) 
+	 {
+		 
+		 for (Entry<String, ProductStock> map:productlist.entrySet()) 
+		 {
+	            if (map.getValue().getOrderId().contentEquals(orderId))
 	            {
 	            	return true;
 	            }
-	            else
-	            {
-	             throw new ProductException("No OrderId Exist");
-	            }
-         }
+		 }
 		 return false;
-		 
 	 }
 	 public String updateExitDateinStock(String orderId,Date exitDate) 
 	 {
-		 for (Entry<String,ProductStock> mp:productlist.entrySet()) 
+		 for (Entry<String,ProductStock> map:productlist.entrySet()) 
 		 {
-			 if (mp.getValue().getOrderId().equals(orderId))
+			 if (map.getValue().getOrderId().equals(orderId))
 			 {
-	           mp.getValue().setExitDate(exitDate);      
+	           map.getValue().setExitDate(exitDate);      
              }
 			 
 		 }
@@ -52,15 +51,16 @@ public class ProductDao
 	 }
 	 public String updateProductStock(String orderId,Date manufacturing_date,Date expiry_date,String qualityCheck)
 	 { 
-		 for (Entry<String , ProductStock> mp:productlist.entrySet()) 
+		 for (Entry<String , ProductStock> map:productlist.entrySet()) 
 		 {
-			 if (mp.getValue().getOrderId().contentEquals(orderId))
+			 if (map.getValue().getOrderId().contentEquals(orderId))
 			 {
-	           mp.getValue().setManufacturingDate(manufacturing_date);
-	           mp.getValue().setExpiryDate(expiry_date);
-	           mp.getValue().setQualityCheck(qualityCheck);
+	           map.getValue().setManufacturingDate(manufacturing_date);
+	           map.getValue().setExpiryDate(expiry_date);
+	           map.getValue().setQualityCheck(qualityCheck);
 			 }
 		 }
 		 return "Data Inserted";
 	 }
+	
 }
