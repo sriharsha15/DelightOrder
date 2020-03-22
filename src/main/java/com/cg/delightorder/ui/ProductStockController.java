@@ -33,9 +33,9 @@ public class ProductStockController
     	 
          break;
     	 }
-    	 catch(ProductException e)
+    	 catch(ProductException exception)
     	 {
-    		 System.out.println(e.getMessage());
+    		 System.out.println(exception.getMessage());
     	 }
     }
     	 break;
@@ -55,11 +55,11 @@ public class ProductStockController
          System.out.println(productService.updateExitDateinStock(orderId,exitDate));
          break;
          }
-         catch(ProductException e)
+         catch(ProductException exception)
          {
-        	 System.out.println(e.getMessage());
+        	 System.out.println(exception.getMessage());
          }
-         catch(ParseException e)
+         catch(ParseException exception)
          {
         	 System.out.println("Invalid date");
          }
@@ -86,12 +86,12 @@ public class ProductStockController
         System.out.println(productService.updateProductStock(orderId,manufacturing_date, expiry_date, qualityCheck));
         break;
         }
-        catch(ProductException e)
+        catch(ProductException exception)
         {
-        	System.out.println(e.getMessage());
+        	System.out.println(exception.getMessage());
     
         }
-        catch(ParseException e)
+        catch(ParseException exception)
         {
        	 System.out.println("Invalid date");
         }
